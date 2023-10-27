@@ -1,0 +1,184 @@
+body {
+    background-color: #121212;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+h1 {
+    font-size: 65px;
+    text-align: center;
+    color: #42f5e8;
+    text-shadow: 0 0 10px rgba(66, 245, 232, 0.8);
+    border: 2px solid transparent;
+    border-image: linear-gradient(45deg, #42f5e8, #2a165f) 1;
+    animation: glow 2s ease-in-out infinite, borderFade 2s ease-in-out infinite;
+}
+
+h1:hover {
+    transform: rotateY(360deg);
+}
+
+pre {
+    font-size: 35px;
+    line-height: 1.6;
+    animation: fadeIn 2s ease-in-out;
+}
+
+a {
+    color: #42f5e8;
+    text-decoration: none;
+    border-bottom: 2px solid #42f5e8;
+    transition: border-bottom 0.3s ease-in-out;
+    display: inline-block;
+    transform: translateX(0);
+    animation: float 3s ease infinite;
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 10px rgba(66, 190, 181, 0.8);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(66, 190, 181, 0.8);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(66, 245, 232, 0.8);
+    }
+}
+
+@keyframes borderFade {
+    0%, 100% {
+        border-image-source: linear-gradient(45deg, #42f5e8, #2a165f);
+    }
+    50% {
+        border-image-source: linear-gradient(45deg, #2a165f, #42f5e8);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Particle Animation */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: particle-float 3s ease infinite, particleFade 4s ease infinite;
+}
+
+@keyframes particle-float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes particleFade {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Rainbow Fading Glowing Lines Animation */
+.rainbow-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.line {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+    opacity: 0.5;
+    transform: translateY(-50%);
+    animation: line-fade 5s linear infinite;
+}
+
+@keyframes line-fade {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    50% {
+        left: 100%;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+/* Fading and Moving Animation for Image */
+img {
+    position: absolute;
+    top: 100%;
+    right: -10px;
+    transform: translateY(-50%);
+    opacity: 0;
+    animation: fadeInRight 2s ease-in-out 1s forwards, moveRight 2s ease-in-out 1s forwards;
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        right: -50px;
+    }
+    100% {
+        right: 100px;
+    }
+}
