@@ -7,10 +7,8 @@
 </head>
 <body>
 <h3>Login</h3>
-<div th:if="${error}">
-    Unable to login. Check your username and password.
-</div>
-<p>If you are not registered, you can register <a th:href="@{/register}">here</a>!</p>
+<p class="registration-offer">Not registered yet? <a class="registration-link" th:href="@{/register}">Join us now!</a></p>
+<div th:if="${error}">Unable to login. Check your username and password.</div>
 <form th:method="POST" th:action="@{/login}" id="loginForm">
     <label for="username">Username: </label>
     <input type="text" name="username" id="username">

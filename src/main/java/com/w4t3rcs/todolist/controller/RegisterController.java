@@ -2,7 +2,6 @@ package com.w4t3rcs.todolist.controller;
 
 import com.w4t3rcs.todolist.model.data.dao.UserRepository;
 import com.w4t3rcs.todolist.model.entity.User;
-import com.w4t3rcs.todolist.model.security.transformer.Transformer;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class RegisterController {
     private final UserRepository userRepository;
-    private final Transformer<User> transformer;
 
     @Autowired
-    public RegisterController(UserRepository userRepository, Transformer<User> transformer) {
+    public RegisterController(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.transformer = transformer;
     }
 
     @ModelAttribute("user")
@@ -39,7 +36,6 @@ public class RegisterController {
     @PostMapping
     public String postRegistry(@ModelAttribute @Valid User user, BindingResult result) {
         if (result.hasErrors()) return "register";
-        transformer.transform(user);
         log.info("Executed POST method on the user: {}!", user);
         userRepository.save(user);
         return "redirect:/";

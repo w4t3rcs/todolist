@@ -1,13 +1,13 @@
 package com.w4t3rcs.todolist.config;
 
-import com.w4t3rcs.todolist.model.entity.User;
+import com.w4t3rcs.todolist.model.data.dao.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -18,11 +18,9 @@ public class SecurityConfig {
     }
 
     @Bean
-    public UserDetailsService userDetails(PasswordEncoder passwordEncoder) {
-        InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
-        userDetailsManager.createUser(new User("admin", passwordEncoder.encode("admin"), "admin@gmail.com"));
-        userDetailsManager.createUser(new User("default", "default", "default@gmail.com"));
-        return userDetailsManager;
+    public UserDetailsService userDetails(UserRepository userRepository) {
+        final String exceptionMessage = "Invalid username or password";
+        return username -> userRepository.findById(username).orElseThrow(() -> new UsernameNotFoundException(exceptionMessage));
     }
 
     @Bean
