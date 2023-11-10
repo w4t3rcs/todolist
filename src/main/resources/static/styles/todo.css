@@ -22,10 +22,10 @@ h1:hover {
     transform: rotateY(360deg);
 }
 
-pre {
-    font-size: 35px;
-    line-height: 1.6;
-    animation: fadeIn 2s ease-in-out;
+p {
+    font-size: 20px;
+    color: #42f5e8;
+    text-shadow: 0 0 10px rgba(66, 245, 232, 0.8);
 }
 
 a {
@@ -36,6 +36,23 @@ a {
     display: inline-block;
     transform: translateX(0);
     animation: float 3s ease infinite;
+}
+
+#create {
+    font-size: 35px;
+}
+
+#list {
+    color: #41b1d3;
+    border-bottom: 2px solid #41b1d3;
+}
+
+#list:hover {
+    border-bottom: 2px solid transparent;
+}
+
+a:hover {
+    border-bottom: 2px solid transparent;
 }
 
 @keyframes glow {
@@ -56,15 +73,6 @@ a {
     }
     50% {
         border-image-source: linear-gradient(45deg, #2a165f, #42f5e8);
-    }
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
     }
 }
 
@@ -117,33 +125,5 @@ a {
     }
     100% {
         left: 0;
-    }
-}
-
-/* Fading and Moving Animation for Image */
-img {
-    position: absolute;
-    top: 100%;
-    right: -10px;
-    transform: translateY(-50%);
-    opacity: 0;
-    animation: fadeInRight 2s ease-in-out 1s forwards, moveRight 2s ease-in-out 1s forwards;
-}
-
-@keyframes fadeInRight {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@keyframes moveRight {
-    0% {
-        right: -50px;
-    }
-    100% {
-        right: 100px;
     }
 }

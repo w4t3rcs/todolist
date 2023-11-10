@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${list.name}"></title>
+    <link rel="stylesheet" th:href="@{/styles/todo/operation.css}">
+</head>
+<body>
+    <div th:object="${list}">
+        <h1 th:text="*{name}"></h1>
+        <p th:text="*{createdAt}"></p>
+        <p th:text="*{description}"></p>
+        <p th:text="*{deadline}"></p>
+        <p>Is your task finished: <span th:text="*{finished}"></span></p>
+        <br>
+        <br>
+        <a th:href="@{/todo/edit/{id}(id=${list.getId()})}">Edit</a>
+        <br>
+        <a th:href="@{/todo/delete/{id}(id=${list.getId()})}">Delete</a>
+    </div>
+</body>
+</html>

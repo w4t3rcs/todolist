@@ -26,9 +26,11 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.authorizeHttpRequests(
-                matcherRegistry -> matcherRegistry.requestMatchers("/todo").hasRole("USER")
+                matcherRegistry -> matcherRegistry.requestMatchers("/todo", "todo/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/todo/admin", "todo/api/**").hasRole("ADMIN")
                         .requestMatchers("/", "/register", "/**").permitAll())
-                .formLogin(formLogin -> formLogin.loginPage("/login").defaultSuccessUrl("/todo"))
+                .formLogin(formLogin -> formLogin.loginPage("/login").defaultSuccessUrl("/todo").permitAll())
+                .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/").permitAll())
                 .build();
     }
 }

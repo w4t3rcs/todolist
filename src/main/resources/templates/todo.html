@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>List Maker</title>
+    <link rel="stylesheet" th:href="@{/styles/todo.css}">
 </head>
 <body>
+    <h1>Welcome to the List Maker</h1>
+    <p>You can start making your list here!</p>
+    <br>
+    <a th:href="@{/todo/create}" id="create">Create</a>
+    <br>
+    <br>
+    <br>
+    <div th:each="list : ${lists}">
+        <a th:href="@{/todo/{id}(id=${list.getId()})}" th:text="${list.getName()}" id="list"></a>
+    </div>
 
+    <div class="rainbow-lines">
+        <div class="line"></div>
+    </div>
 </body>
 </html>

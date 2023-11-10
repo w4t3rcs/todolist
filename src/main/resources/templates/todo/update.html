@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Todo</title>
+    <link rel="stylesheet" th:href="@{/styles/todo/operation.css}">
+</head>
+<body>
+    <h2>Edit your Todo!</h2>
+    <form th:method="PUT" th:action="@{/todo/edit/{id}(id=${list.id})}" th:object="${list}">
+        <label for="name">Name: </label>
+        <input type="text" th:field="*{name}" id="name">
+        <span style="color: #ba6a65" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+        <br>
+        <label for="description">Description: </label>
+        <textarea th:field="*{description}" id="description">Enter text here...</textarea>
+        <span style="color: #ba6a65" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+        <br>
+        <label for="deadline">Deadline: </label>
+        <input type="datetime-local" th:field="*{deadline}" id="deadline">
+        <span style="color: #ba6a65" th:if="${#fields.hasErrors('deadline')}" th:errors="*{description}"></span>
+        <br>
+        <label for="finished">Is finished: </label>
+        <input type="checkbox" th:field="*{finished}" id="finished">
+        <br>
+        <input type="submit">
+    </form>
+</body>
+</html>

@@ -2,13 +2,14 @@ package com.w4t3rcs.todolist.model.data.dao.jdbc;
 
 import com.w4t3rcs.todolist.model.data.dao.UserRepository;
 import com.w4t3rcs.todolist.model.entity.User;
-import com.w4t3rcs.todolist.model.security.transformer.Transformer;
+import com.w4t3rcs.todolist.model.data.transformer.Transformer;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -39,6 +40,11 @@ public class JdbcUserRepository implements UserRepository {
     @Override
     public Optional<User> findById(String id) {
         return Optional.of(entityManager.find(User.class, id));
+    }
+
+    @Override
+    public List<User> findAll() {
+        return entityManager.createQuery("FROM User", User.class).getResultList();
     }
 
     @Override

@@ -1,6 +1,13 @@
 spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
   datasource:
     url: jdbc:mysql://localhost:3306/todo_schema
     password: Mu18052007
     username: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    serialization:
+      indent-output: true
