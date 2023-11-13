@@ -33,7 +33,6 @@ public class User implements UserDetails, Persistable<String> {
     @NotEmpty(message = "Email is empty!")
     @Email(message = "Email isn't valid")
     private String email;
-    @ColumnDefault(value = "USER")
     private String role;
 
     public User(String username, String password, String email) {

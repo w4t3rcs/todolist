@@ -17,6 +17,7 @@ public class UserTransformer implements Transformer<User> {
     @Override
     public void transform(User user) {
         transformPassword(user);
+        user.setRole("USER");
     }
 
     public void transformPassword(User user) {
