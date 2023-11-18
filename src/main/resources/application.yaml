@@ -8,6 +8,8 @@ management:
         include: '*'
       base-path: /todo/api/management
 spring:
+  jmx:
+    enabled: true
   mvc:
     hiddenmethod:
       filter:
