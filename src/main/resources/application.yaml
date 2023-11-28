@@ -8,11 +8,22 @@ management:
         include: '*'
       base-path: /todo/api/management
 spring:
-  email:
+  mail:
     username: otodolist@gmail.com
     password: Listing28Todos
     host: smtp.gmail.com
-    port: 143
+    port: 587
+    properties:
+      mail:
+        transport:
+          protocol:
+            smtp
+        debug:
+          true
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   jmx:
     enabled: true
   mvc:
