@@ -1,6 +1,5 @@
 package com.w4t3rcs.todolist.config;
 
-import com.w4t3rcs.todolist.model.properties.EmailProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
