@@ -8,6 +8,11 @@ management:
         include: '*'
       base-path: /todo/api/management
 spring:
+  email:
+    username: otodolist@gmail.com
+    password: Listing28Todos
+    host: smtp.gmail.com
+    port: 143
   jmx:
     enabled: true
   mvc:
@@ -24,9 +29,6 @@ spring:
       indent-output: true
 todo:
   email:
-    username: todolist-official
-    password: Listing28Todos
-    host: imap.todo.com
-    port: 143
-    mailbox: INBOX
-    poll-rate: 10000
+    message:
+      subject: TodoList Expiration!
+      body: Hello from TodoList!%n%nYour TodoList has been expired!%nInformation about your TodoList:%n%s%n%s%n%s%n%s%n%s

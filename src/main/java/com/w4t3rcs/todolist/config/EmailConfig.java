@@ -9,18 +9,16 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import java.util.Properties;
 
 @Configuration
-public class IntegrationConfig {
+public class EmailConfig {
     @Bean
-    public JavaMailSender javaMailSender(EmailProperties emailProperties) {
+    public JavaMailSender javaMailSender() {
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
-        javaMailSender.setHost(emailProperties.getHost());
-        javaMailSender.setPort(emailProperties.getPort());
-        javaMailSender.setUsername(emailProperties.getUsername());
-        javaMailSender.setPassword(emailProperties.getPassword());
 
         Properties properties = javaMailSender.getJavaMailProperties();
-        properties.setProperty("mail.imap.ssl.enable", "false");
-        properties.setProperty("mail.imap.starttls.enable", "true");
+        properties.put("mail.transport.protocol", "smtp");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.debug", "true");
 
         return javaMailSender;
     }
