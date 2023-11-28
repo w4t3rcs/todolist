@@ -22,3 +22,10 @@ spring:
   jackson:
     serialization:
       indent-output: true
+todo:
+  email:
+    host: imap.todo.com
+    mailbox: INBOX
+    username: todolist-official
+    password: Listing28Todos
+    poll-rate: 10000
