@@ -24,8 +24,9 @@ spring:
       indent-output: true
 todo:
   email:
-    host: imap.todo.com
-    mailbox: INBOX
     username: todolist-official
     password: Listing28Todos
+    host: imap.todo.com
+    port: 143
+    mailbox: INBOX
     poll-rate: 10000

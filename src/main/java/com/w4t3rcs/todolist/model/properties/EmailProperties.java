@@ -11,6 +11,7 @@ public class EmailProperties {
     private String username;
     private String password;
     private String host;
+    private int port;
     private String mailbox;
     private long pollRate = 30000L;
 
