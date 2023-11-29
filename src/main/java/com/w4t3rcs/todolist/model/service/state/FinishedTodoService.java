@@ -1,6 +1,6 @@
 package com.w4t3rcs.todolist.model.service.state;
 
-import com.w4t3rcs.todolist.model.ExpirationEmailProperties;
+import com.w4t3rcs.todolist.model.properties.ExpirationEmailProperties;
 import com.w4t3rcs.todolist.model.data.dao.TodoListRepository;
 import com.w4t3rcs.todolist.model.data.dao.UserRepository;
 import com.w4t3rcs.todolist.model.entity.TodoList;

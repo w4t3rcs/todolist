@@ -1,4 +1,4 @@
-package com.w4t3rcs.todolist.model;
+package com.w4t3rcs.todolist.model.properties;
 
 import com.w4t3rcs.todolist.model.entity.TodoList;
 import lombok.Data;

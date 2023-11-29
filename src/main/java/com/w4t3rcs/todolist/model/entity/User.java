@@ -1,12 +1,9 @@
 package com.w4t3rcs.todolist.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.proxy.HibernateProxy;
 import org.springframework.data.domain.Persistable;
 import org.springframework.security.core.GrantedAuthority;
@@ -34,6 +31,8 @@ public class User implements UserDetails, Persistable<String> {
     @Email(message = "Email isn't valid")
     private String email;
     private String role;
+    @Column(name = "avatar_location")
+    private String avatarFilename;
 
     public User(String username, String password, String email) {
         this.username = username;
@@ -74,6 +73,12 @@ public class User implements UserDetails, Persistable<String> {
     @Override
     public boolean isNew() {
         return getId() == null;
+    }
+
+    public String getAvatarFullLocation() {
+        String location = "/images/users/" + avatarFilename;
+        System.out.println(location);
+        return location;
     }
 
     @Override

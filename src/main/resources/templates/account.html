@@ -2,10 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Admin Page</title>
+    <title th:text="${user.username}"></title>
     <link rel="stylesheet" th:href="@{/styles/home.css}">
 </head>
 <body>
+    <img th:src="@{${user.getAvatarFullLocation()}}" alt="no image :(">
+    <br>
     Username: <p th:text="${user.username}"></p>
     <br>
     Email: <p th:text="${user.email}"></p>
