@@ -15,6 +15,7 @@
     <div th:if="${user.role.equals('ADMIN')}">
         Role: <p th:text="${user.role}"></p>
     </div>
+    <a th:href="@{/todo/account/edit}">Edit</a>
     <div class="rainbow-lines">
         <div class="line"></div>
     </div>

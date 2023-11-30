@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${user.username}"></title>
+    <link rel="stylesheet" th:href="@{/styles/todo/operation.css}">
+</head>
+<body>
+    <h2>Edit your Profile!</h2>
+    <form th:method="PUT" th:action="@{/todo/account/edit}" th:object="${user}" enctype="multipart/form-data">
+        <label for="password">Password: </label>
+        <input type="password" th:field="*{password}" id="password">
+        <span style="color: #ba6a65" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+        <br>
+        <label for="email">Email: </label>
+        <input type="text" th:field="*{email}" id="email">
+        <span style="color: #ba6a65" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        <br>
+        <label for="avatar">Avatar: </label>
+        <input type="file" th:field="*{avatar}" id="avatar" alt="no image :(">
+        <span style="color: #ba6a65" ></span>
+        <br>
+        <input type="submit">
+    </form>
+</body>
+</html>

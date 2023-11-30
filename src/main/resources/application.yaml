@@ -30,6 +30,9 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
   datasource:
     url: jdbc:mysql://localhost:3306/todo_schema
     password: Mu18052007

@@ -21,7 +21,7 @@ public class UserTransformer implements Transformer<User> {
         transformAvatarLocation(user);
     }
 
-    private void transformPassword(User user) {
+    public void transformPassword(User user) {
         String password = user.getPassword();
         String encodedPassword = passwordEncoder.encode(password);
         user.setPassword(encodedPassword);

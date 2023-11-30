@@ -122,6 +122,8 @@ a {
 
 /* Fading and Moving Animation for Image */
 img {
+    width: 200px;
+    height: auto;
     position: absolute;
     top: 100%;
     right: -10px;

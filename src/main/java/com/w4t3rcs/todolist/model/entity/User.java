@@ -9,6 +9,7 @@ import org.springframework.data.domain.Persistable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Collection;
 import java.util.List;
@@ -33,6 +34,8 @@ public class User implements UserDetails, Persistable<String> {
     private String role;
     @Column(name = "avatar_location")
     private String avatarFilename;
+    @Transient
+    private MultipartFile avatar;
 
     public User(String username, String password, String email) {
         this.username = username;
@@ -76,9 +79,7 @@ public class User implements UserDetails, Persistable<String> {
     }
 
     public String getAvatarFullLocation() {
-        String location = "/images/users/" + avatarFilename;
-        System.out.println(location);
-        return location;
+        return "/images/users/" + avatarFilename;
     }
 
     @Override

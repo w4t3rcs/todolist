@@ -1,4 +1,4 @@
-package com.w4t3rcs.todolist.controller.user;
+package com.w4t3rcs.todolist.controller.user.account;
 
 import com.w4t3rcs.todolist.model.data.dao.UserRepository;
 import com.w4t3rcs.todolist.model.entity.User;
@@ -8,25 +8,28 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/todo/account")
 @Controller
-public class AccountController {
+public class GetAccountController {
     private final UserRepository userRepository;
 
     @Autowired
-    public AccountController(UserRepository userRepository) {
+    public GetAccountController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    @GetMapping
-    public String getProfile(Model model) {
+    @ModelAttribute
+    public User user() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String name = authentication.getName();
-        User user = userRepository.findById(name).orElseThrow(RuntimeException::new);
-        model.addAttribute("user", user);
+        return userRepository.findById(name).orElseThrow(RuntimeException::new);
+    }
 
-        return "account";
+    @GetMapping
+    public String getProfile() {
+        return "account/account";
     }
 }

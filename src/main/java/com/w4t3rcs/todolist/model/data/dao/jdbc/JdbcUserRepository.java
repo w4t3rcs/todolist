@@ -1,6 +1,7 @@
 package com.w4t3rcs.todolist.model.data.dao.jdbc;
 
 import com.w4t3rcs.todolist.model.data.dao.UserRepository;
+import com.w4t3rcs.todolist.model.data.transformer.UserTransformer;
 import com.w4t3rcs.todolist.model.entity.User;
 import com.w4t3rcs.todolist.model.data.transformer.Transformer;
 import jakarta.persistence.EntityManager;
@@ -50,6 +51,7 @@ public class JdbcUserRepository implements UserRepository {
     @Override
     @Transactional
     public Optional<User> update(User user) {
+        ((UserTransformer) transformer).transformPassword(user);
         User merged = entityManager.merge(user);
         return Optional.of(merged);
     }
