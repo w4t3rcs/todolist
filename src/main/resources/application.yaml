@@ -8,6 +8,13 @@ management:
         include: '*'
       base-path: /todo/api/management
 spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 884206021814-h4qtgif463ohp2tscie085atdmhs7b73.apps.googleusercontent.com
+            client-secret: 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
   mail:
     username: otodolist@gmail.com
     password: Listing28Todos

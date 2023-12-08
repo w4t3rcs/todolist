@@ -30,6 +30,7 @@ public class SecurityConfig {
                         .requestMatchers("/todo/admin", "/todo/admin/**", "todo/api/**").hasRole("ADMIN")
                         .requestMatchers("/", "/register", "/**").permitAll())
                 .formLogin(formLogin -> formLogin.loginPage("/login").defaultSuccessUrl("/todo").permitAll())
+                .oauth2Login(oauthLogin -> oauthLogin.loginPage("/login").defaultSuccessUrl("/todo").permitAll())
                 .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/").permitAll())
                 .build();
     }
