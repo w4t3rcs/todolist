@@ -1,6 +1,7 @@
 package com.w4t3rcs.todolist.model.service.message.email;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -15,14 +16,15 @@ public class SimpleEmailService implements EmailService<SimpleMailMessage> {
     }
 
     @Override
-    public void sendMessage(String to, String subject, String body) {
-        SimpleMailMessage message = createMessage(to, subject, body);
+    public void sendMessage(String from, String to, String subject, String body) {
+        SimpleMailMessage message = createMessage(from, to, subject, body);
         javaMailSender.send(message);
     }
 
     @Override
-    public SimpleMailMessage createMessage(String to, String subject, String body) {
+    public SimpleMailMessage createMessage(String from, String to, String subject, String body) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setFrom(from);
         simpleMailMessage.setTo(to);
         simpleMailMessage.setSubject(subject);
         simpleMailMessage.setText(body);

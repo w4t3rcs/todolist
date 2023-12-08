@@ -16,7 +16,7 @@ spring:
             client-id: 884206021814-h4qtgif463ohp2tscie085atdmhs7b73.apps.googleusercontent.com
             client-secret: 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
   mail:
-    username: otodolist@gmail.com
+    username: otodolist
     password: Listing28Todos
     host: smtp.gmail.com
     port: 587

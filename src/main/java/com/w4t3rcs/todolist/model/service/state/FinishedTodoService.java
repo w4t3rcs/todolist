@@ -1,5 +1,6 @@
 package com.w4t3rcs.todolist.model.service.state;
 
+import com.w4t3rcs.todolist.model.constants.EmailConstants;
 import com.w4t3rcs.todolist.model.properties.ExpirationEmailProperties;
 import com.w4t3rcs.todolist.model.data.dao.TodoListRepository;
 import com.w4t3rcs.todolist.model.data.dao.UserRepository;
@@ -38,7 +39,7 @@ public class FinishedTodoService {
                 .forEach(todoList -> {
                     todoListRepository.deleteByDeadline(todoList.getDeadline());
                     User user = userRepository.findById(todoList.getUsername()).orElseThrow(RuntimeException::new);
-                    emailService.sendMessage(user.getEmail(), messageProperties.getSubject(), messageProperties.getExpirationMessage(todoList));
+                    emailService.sendMessage(EmailConstants.ORGANIZATION_EMAIL, user.getEmail(), messageProperties.getSubject(), messageProperties.getExpirationMessage(todoList));
                 });
     }
 
